@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <h1>Ключ(название)</h1>
+    <ul>
+        {% for currency, wallets in wallets_data.items %}
+            <li>{{ currency }}</li>
+            <ul>
+                {% for wallet in wallets %}
+                    <li>{{ wallet }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+{% endblock %}

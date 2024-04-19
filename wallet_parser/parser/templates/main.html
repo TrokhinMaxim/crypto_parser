@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка файла</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffffff; /* Белый фон */
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #e0e0e0; /* Граница */
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            position: relative;
+        }
+
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container label {
+            margin-bottom: 8px;
+        }
+
+        .form-container input[type="file"],
+        .form-container button {
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container input[type="file"]:hover,
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-container button {
+            margin-top: 20px;
+            align-self: flex-end;
+        }
+
+        .loading-gif {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .loading-text {
+            position: absolute;
+            top: calc(50% - 20px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Загрузка файла</h1>
+        <form method="post" enctype="multipart/form-data" id="upload-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" id="upload-button">Взломать пентагон</button>
+            <img src="https://media1.tenor.com/m/-O0Xii3GomgAAAAd/pug-dance.gif" class="loading-gif" alt="Loading..." id="loading-gif">
+            <span class="loading-text">Загружаю...</span>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('upload-form');
+            const uploadButton = document.getElementById('upload-button');
+            const loadingGif = document.getElementById('loading-gif');
+            const loadingText = document.querySelector('.loading-text');
+
+            uploadButton.addEventListener('click', function() {
+                loadingGif.style.display = 'inline-block';
+                loadingText.style.display = 'block';
+            });
+
+            form.addEventListener('submit', function() {
+                // Здесь можно добавить дополнительную логику, если нужно
+            });
+        });
+    </script>
+</body>
+</html>
