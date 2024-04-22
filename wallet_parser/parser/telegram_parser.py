@@ -20,14 +20,11 @@ def parse_telegram_html(html_file_name):
 
 
 def extract_latin_and_digits(file_path):
-    # Список для хранения слов на латинице и цифр
     latin_and_digits = []
 
-    # Чтение файла и извлечение данных
     with open(file_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
-            # Используем регулярное выражение для поиска слов на латинице или цифр
             words = re.findall(r'\b[a-zA-Z0-9]+\b', line)
             latin_and_digits.extend(words)
 
